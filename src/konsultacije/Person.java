@@ -1,16 +1,17 @@
 package konsultacije;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.chrono.IsoChronology;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
 
-    private String name;
-    private LocalDate birthday;
-    private Gender gender;
-    private String emailAddress;
+    private final String name;
+    private final LocalDate birthday;
+    private final Gender gender;
+    private final String emailAddress;
 
     public Person(String name, LocalDate birthday, Gender gender, String emailAddress) {
         this.name = name;
@@ -38,6 +39,11 @@ public class Person {
     public int getAge() {
         LocalDate today = LocalDate.now();
         return birthday.until(today).getYears();
+    }
+
+    //objektna metoda
+    public boolean isBaby() {
+        return getAge() <= 3;
     }
 
     @Override
@@ -69,6 +75,8 @@ public class Person {
                         "Bob",
                         IsoChronology.INSTANCE.date(2000, 9, 12),
                         Gender.MALE, "bob@example.com"));
+        roster.add(new Person("Ivana", LocalDate.of(2005, Month.MARCH, 1), Gender.FEMALE, "ivana@gmail.com"));
+        roster.add(new Person("Zana", LocalDate.of(2018, Month.MARCH, 1), Gender.FEMALE, "ivana@gmail.com"));
 
         return roster;
     }
