@@ -21,6 +21,7 @@ public class GeekPanel extends JPanel {
     private JCheckBox hairCheckBox;
     private JCheckBox teethCheckBox;
     private JLabel pictureLabel;
+    private String pictureChoice;
 
     public GeekPanel() {
         super(new BorderLayout());

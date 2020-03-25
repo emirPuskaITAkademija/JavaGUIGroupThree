@@ -20,7 +20,7 @@ public class ButtonPanel extends JPanel implements ActionListener {
 
     public ButtonPanel() {
         //kreirali button -> 3 left, middle, right
-        ImageIconLoader iconLoader = new ImageIconLoader();
+        ImageIconLoader iconLoader = new ImageIconLoader(ButtonPanel.class);
         ImageIcon leftImageIcon = iconLoader.createImageIcon("right.gif");
         this.leftButton = new JButton("Disable middle button", leftImageIcon);//left.gif / ImageIcon
         this.leftButton.setVerticalTextPosition(SwingConstants.CENTER);
