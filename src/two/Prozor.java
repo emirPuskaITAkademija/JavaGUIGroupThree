@@ -26,7 +26,6 @@ public class Prozor {
     
     public static void main(String[] args) {
         JPanel panel = new ButtonPanel();
-        panel = new GeekPanel();
         Prozor prozor = new Prozor(panel);
         Runnable runProzor = prozor::show;
         SwingUtilities.invokeLater(runProzor);

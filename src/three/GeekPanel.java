@@ -20,16 +20,15 @@ import javax.swing.JPanel;
  */
 public class GeekPanel extends JPanel implements ItemListener {
 
-    private JCheckBox chinCheckBox;
-    private JCheckBox glassesCheckBox;
-    private JCheckBox hairCheckBox;
-    private JCheckBox teethCheckBox;
-    private JLabel pictureLabel;
-    private StringBuffer pictureChoice;
+    private final JCheckBox chinCheckBox;
+    private final JCheckBox glassesCheckBox;
+    private final JCheckBox hairCheckBox;
+    private final JCheckBox teethCheckBox;
+    private final JLabel pictureLabel;
+    private final StringBuffer pictureChoice;
 
     public GeekPanel() {
         super(new BorderLayout());
-
         chinCheckBox = new JCheckBox("Chin");
         chinCheckBox.setSelected(true);
         chinCheckBox.addItemListener(this);
@@ -47,7 +46,8 @@ public class GeekPanel extends JPanel implements ItemListener {
         teethCheckBox.addItemListener(this);
 
         pictureChoice = new StringBuffer("cght");
-        pictureLabel = new JLabel("NO IMAGE");
+        pictureLabel = new JLabel();
+        updatePicture();
 
         JPanel checkBoxPanel = new JPanel(new GridLayout(0, 1));
         checkBoxPanel.add(chinCheckBox);
@@ -58,6 +58,7 @@ public class GeekPanel extends JPanel implements ItemListener {
         add(pictureLabel, BorderLayout.CENTER);
     }
 
+    //chin -> geek-cght -> geek--ght
     @Override
     public void itemStateChanged(ItemEvent itemEvent) {
         char c = '-';
@@ -88,9 +89,12 @@ public class GeekPanel extends JPanel implements ItemListener {
         }
         pictureChoice.setCharAt(index, c);//  0 - c; 1 - g 
         System.out.println("IZBOR slike : " + pictureChoice);
-        ImageIconLoader imageIconLoader = new ImageIconLoader(GeekPanel.class);
-        ImageIcon imageIcon = imageIconLoader.createImageIcon("geek-"+pictureChoice+".gif");
-        pictureLabel.setIcon(imageIcon);
+        updatePicture();
     }
 
+    private void updatePicture() {
+        ImageIconLoader imageIconLoader = new ImageIconLoader(GeekPanel.class);
+        ImageIcon imageIcon = imageIconLoader.loadImageIcon("geek-" + pictureChoice + ".gif");
+        pictureLabel.setIcon(imageIcon);
+    }
 }
