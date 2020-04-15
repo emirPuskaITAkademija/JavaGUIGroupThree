@@ -11,9 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import two.ImageIconLoader;
 //BorderLayout
-
+//ComboBoxPanel -> kontejner
 public class ComboBoxPanel extends JPanel {
 
+    //UI controls
     private final JComboBox<String> petComboBox;
     private final JLabel pictureLabel;
 

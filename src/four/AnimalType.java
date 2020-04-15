@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javax.swing.ImageIcon;
+import two.ImageIconLoader;
 
 public enum AnimalType {
     BIRD("Bird", KeyEvent.VK_B),
@@ -34,8 +36,21 @@ public enum AnimalType {
         return keyEvent;
     }
 
-    public static String[] findPetNames() {
+    public static ImageIcon[] findPetImageIcons() {
         AnimalType[] animals = AnimalType.values();
+        ImageIcon[] imageIcons = new ImageIcon[animals.length];
+        ImageIconLoader loader = new ImageIconLoader(AnimalType.class);
+        for(int i = 0; i<animals.length; i++){
+            AnimalType animal = animals[i];
+            String fileName = animal.getFileName();
+            ImageIcon imageIcon = loader.loadImageIcon(fileName);
+            imageIcons[i] = imageIcon;
+        }
+        return imageIcons;
+    }
+
+    public static String[] findPetNames() {
+        AnimalType[] animals = AnimalType.values();//values()
         String[] petNames = new String[animals.length];//5 praznih
         for (int i = 0; i < animals.length; i++) {
             AnimalType animalType = animals[i];
@@ -52,7 +67,7 @@ public enum AnimalType {
         List<String> animalList = Stream.of(animals)//AnimalyType
                 .map(transformer)//AnimalType -> String
                 .collect(Collectors.toList());//List<String>
-        
+
         return animalList.toArray(new String[animals.length]);
         /*return Stream.of(animals)
                 .map(AnimalType::getName)

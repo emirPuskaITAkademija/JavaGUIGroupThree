@@ -19,6 +19,7 @@ public class ApplicationStarter {
     public static void main(String[] args) {
         JPanel comboBoxPanel = new ComboBoxPanel();
         ComboBoxWindow window = new ComboBoxWindow(comboBoxPanel);
+        //kreiraj unutar drugog threda
         Runnable runnable = window::showWindow;
         SwingUtilities.invokeLater(runnable);
     }
