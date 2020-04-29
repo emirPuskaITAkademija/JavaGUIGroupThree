@@ -8,12 +8,12 @@ package dao;
  */
 public class PlayerInfo {
 
-    private final Integer id;
-    private final String firstName;
-    private final String lastName;
-    private final String sport;
-    private final Integer ofYears;
-    private final Boolean vegetarian;
+    private Integer id;
+    private String firstName;
+    private String lastName;
+    private String sport;
+    private Integer ofYears;
+    private Boolean vegetarian;
 
     public PlayerInfo(Integer id, String firstName, String lastName, String sport, int ofYears, Boolean vegetarian) {
         this.id = id;
@@ -24,24 +24,48 @@ public class PlayerInfo {
         this.vegetarian = vegetarian;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getLastName() {
         return lastName;
+    }
+
+    public void setSport(String sport) {
+        this.sport = sport;
     }
 
     public String getSport() {
         return sport;
     }
 
+    public void setOfYears(Integer ofYears) {
+        this.ofYears = ofYears;
+    }
+
     public Integer getOfYears() {
         return ofYears;
+    }
+
+    public void setVegetarian(Boolean vegetarian) {
+        this.vegetarian = vegetarian;
     }
 
     public Boolean getVegetarian() {
